@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Bookmark Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">📚 Bookmark Manager</div>
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search bookmarks or press Enter for Google search...">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <div class="header-actions">
+                    <button class="action-btn" id="themeToggle" title="Toggle theme">🌙</button>
+                    <button class="action-btn" id="sortBtn" title="Sort bookmarks">📊</button>
+                    <button class="action-btn" id="exportBtn" title="Export bookmarks">📄</button>
+                    <input type="file" id="importFile" accept=".json" style="display: none">
+                    <button class="action-btn" id="importBtn" title="Import bookmarks">📥</button>
+                    <button class="add-btn" id="addBookmarkBtn">
+                        <span>➕</span>
+                        Add Bookmark
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- AI Chat Section -->
+            <div class="ai-container">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <span>🤖</span>
+                    <strong>AI Assistant</strong>
+                </div>
+                <input type="text" id="aiInput" class="ai-input" placeholder="Ask me anything... (e.g., 'What is JavaScript?')" />
+                <div id="aiResponse" class="ai-response"></div>
+            </div>
+
+            <!-- Statistics Section -->
+            <div class="stats-container" id="statsContainer">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalBookmarks">0</div>
+                    <div class="stat-label">Total</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="codingCount">0</div>
+                    <div class="stat-label">💻 Coding</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="socialCount">0</div>
+                    <div class="stat-label">👥 Social</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="toolsCount">0</div>
+                    <div class="stat-label">🛠️ Tools</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="learningCount">0</div>
+                    <div class="stat-label">📚 Learning</div>
+                </div>
+            </div>
+
+            <div class="categories-nav" id="categoriesNav">
+                <button class="category-btn active" data-category="all">📋 All</button>
+                <button class="category-btn" data-category="coding">💻 Coding</button>
+                <button class="category-btn" data-category="social">👥 Social</button>
+                <button class="category-btn" data-category="tools">🛠️ Tools</button>
+                <button class="category-btn" data-category="learning">📚 Learning</button>
+                <button class="category-btn" data-category="entertainment">🎬 Entertainment</button>
+                <button class="category-btn" data-category="news">📰 News</button>
+                <button class="category-btn" data-category="shopping">🛒 Shopping</button>
+                <button class="category-btn" data-category="other">📂 Other</button>
+            </div>
+
+            <div class="bookmarks-grid" id="bookmarksGrid"></div>
+
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon">🔭</div>
+                <h3>No bookmarks found</h3>
+                <p>Start by adding your first bookmark!</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add/Edit Bookmark Modal -->
+    <div class="modal" id="bookmarkModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">➕ Add Bookmark</h2>
+                <button class="close-btn" id="closeModal">✖</button>
+            </div>
+            <form id="bookmarkForm">
+                <div class="form-group">
+                    <label class="form-label" for="bookmarkUrl">🌐 Website URL *</label>
+                    <input type="url" id="bookmarkUrl" class="form-input" placeholder="https://example.com" required />
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="bookmarkName">📝 Name</label>
+                    <input type="text" id="bookmarkName" class="form-input" placeholder="Auto-detected or custom name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="bookmarkCategory">📁 Category</label>
+                    <select id="bookmarkCategory" class="form-select">
+                        <option value="coding">💻 Coding</option>
+                        <option value="social">👥 Social</option>
+                        <option value="tools">🛠️ Tools</option>
+                        <option value="learning">📚 Learning</option>
+                        <option value="news">📰 News</option>
+                        <option value="entertainment">🎬 Entertainment</option>
+                        <option value="shopping">🛒 Shopping</option>
+                        <option value="other">📂 Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="bookmarkTags">🏷️ Tags (comma-separated)</label>
+                    <textarea class="form-textarea" id="bookmarkTags" placeholder="AI, productivity, tools"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelBtn">✖ Cancel</button>
+                    <button type="submit" class="btn-primary" id="saveBtn">
+                        <span id="saveBtnText">💾 Save Bookmark</span>
+                        <div class="spinner" id="saveSpinner" style="display: none;"></div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>

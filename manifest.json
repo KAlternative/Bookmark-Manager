@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "📚 Bookmark Manager",
+  "version": "1.0",
+  "description": "Manage and categorize your bookmarks in a full tab with AI assistance!",
+  "permissions": ["storage"],
+  "host_permissions": ["<all_urls>"],
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}
