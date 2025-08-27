@@ -5,7 +5,7 @@
         // Starter bookmarks for new users
         const STARTER_BOOKMARKS = [
             {
-                id: "starter_1",
+                id: "Bookmark-1",
                 name: "CodePen",
                 url: "https://codepen.io",
                 category: "coding",
@@ -77,9 +77,6 @@
 
             // Category navigation
             document.getElementById("categoriesNav").addEventListener("click", handleCategoryFilter);
-
-            // AI assistant
-            document.getElementById("aiInput").addEventListener("keypress", handleAIInput);
 
             // Keyboard shortcuts
             document.addEventListener("keydown", handleKeyboardShortcuts);
@@ -262,50 +259,7 @@
             }
         }
 
-        // === AI ASSISTANT ===
-        function handleAIInput(event) {
-            if (event.key === 'Enter') {
-                const userQuestion = event.target.value.trim();
-                if (userQuestion) {
-                    showAIResponse(userQuestion);
-                }
-            }
-        }
-
-        function showAIResponse(question) {
-            const responseContainer = document.getElementById("aiResponse");
-            responseContainer.classList.add("active");
-            
-            // Predefined helpful responses
-            const knowledgeBase = {
-                "what is javascript": "JavaScript is a versatile programming language primarily used for web development. It enables interactive web pages and is an essential part of web applications alongside HTML and CSS.",
-                "how to learn coding": "Start with fundamentals: Choose a language (Python/JavaScript), practice regularly on platforms like CodePen, build projects, and use resources like Scrimba for interactive learning.",
-                "what is ai": "AI (Artificial Intelligence) refers to computer systems that can perform tasks typically requiring human intelligence, such as learning, reasoning, and problem-solving.",
-                "best coding resources": "Great resources include: Scrimba for interactive learning, CodePen for practice, ProjectLearn for project-based learning, and LearnVern for comprehensive courses.",
-                "how to organize bookmarks": "Use categories to group similar sites, add descriptive tags for easy searching, and regularly review and clean up your bookmarks to keep them relevant."
-            };
-            
-            const questionLowerCase = question.toLowerCase();
-            let response = knowledgeBase[questionLowerCase];
-            
-            // Look for partial matches if exact match not found
-            if (!response) {
-                for (const [key, value] of Object.entries(knowledgeBase)) {
-                    if (questionLowerCase.includes(key.split(' ')[0]) || key.includes(questionLowerCase.split(' ')[0])) {
-                        response = value;
-                        break;
-                    }
-                }
-            }
-            
-            // Default response if no match found
-            if (!response) {
-                response = `I'd be happy to help with "${question}"! For detailed information, I recommend checking out the learning resources in your bookmarks like Scrimba, ProjectLearn, or CodeHype. You can also ask more specific questions about coding, AI, or web development.`;
-            }
-            
-            responseContainer.textContent = `🤖 ${response}`;
-            document.getElementById("aiInput").value = "";
-        }
+        
 
         // === BOOKMARK DISPLAY ===
         function displayAllBookmarks(searchQuery = "") {
