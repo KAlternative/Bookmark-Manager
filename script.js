@@ -1,4 +1,4 @@
-        let bookmarks = [];
+let bookmarks = [];
         let currentFilter = "all";
         let editingId = null;
 
@@ -6,23 +6,122 @@
         const STARTER_BOOKMARKS = [
             {
                 id: "Bookmark-1",
+                name: "GitHub",
+                url: "https://github.com",
+                category: "coding",
+                tags: ["git", "repository", "code", "development"],
+                favicon: "https://www.google.com/s2/favicons?sz=64&domain_url=https://github.com",
+                dateAdded: "2024-01-01T00:00:00.000Z"
+            },
+            {
+                id: "Bookmark-2",
+                name: "YouTube",
+                url: "https://youtube.com",
+                category: "entertainment",
+                tags: ["videos", "streaming", "tutorials"],
+                favicon: "https://www.google.com/s2/favicons?sz=64&domain_url=https://youtube.com",
+                dateAdded: "2024-01-01T01:00:00.000Z"
+            },
+            {
+                id: "Bookmark-3",
                 name: "CodePen",
                 url: "https://codepen.io",
                 category: "coding",
                 tags: ["frontend", "demos", "playground", "code"],
                 favicon: "https://www.google.com/s2/favicons?sz=64&domain_url=https://codepen.io",
-                dateAdded: "2024-01-01T00:00:00.000Z"
+                dateAdded: "2024-01-01T02:00:00.000Z"
+            },
+            {
+                id: "Bookmark-4",
+                name: "LeetCode",
+                url: "https://leetcode.com",
+                category: "coding",
+                tags: ["algorithms", "interviews", "practice", "programming"],
+                favicon: "https://www.google.com/s2/favicons?sz=64&domain_url=https://leetcode.com",
+                dateAdded: "2024-01-01T03:00:00.000Z"
+            },
+            {
+                id: "Bookmark-5",
+                name: "Gmail",
+                url: "https://gmail.com",
+                category: "tools",
+                tags: ["email", "google", "communication"],
+                favicon: "https://www.google.com/s2/favicons?sz=64&domain_url=https://gmail.com",
+                dateAdded: "2024-01-01T04:00:00.000Z"
+            },
+            {
+                id: "Bookmark-6",
+                name: "HiAnime",
+                url: "https://hianime.to",
+                category: "entertainment",
+                tags: ["anime", "streaming", "movies"],
+                favicon: "https://www.google.com/s2/favicons?sz=64&domain_url=https://hianime.to",
+                dateAdded: "2024-01-01T05:00:00.000Z"
+            },
+            {
+                id: "Bookmark-7",
+                name: "EmuGames",
+                url: "https://emugames.net",
+                category: "entertainment",
+                tags: ["games", "emulator", "retro"],
+                favicon: "https://www.google.com/s2/favicons?sz=64&domain_url=https://emugames.net",
+                dateAdded: "2024-01-01T06:00:00.000Z"
+            },
+            {
+                id: "Bookmark-8",
+                name: "Scrimba",
+                url: "https://scrimba.com",
+                category: "learning",
+                tags: ["coding", "tutorials", "interactive", "education"],
+                favicon: "https://www.google.com/s2/favicons?sz=64&domain_url=https://scrimba.com",
+                dateAdded: "2024-01-01T07:00:00.000Z"
+            },
+            {
+                id: "Bookmark-9",
+                name: "Fake Details",
+                url: "https://fakedetails.com",
+                category: "tools",
+                tags: ["fake", "generator", "testing", "utility"],
+                favicon: "https://www.google.com/s2/favicons?sz=64&domain_url=https://fakedetails.com",
+                dateAdded: "2024-01-01T08:00:00.000Z"
+            },
+            {
+                id: "Bookmark-10",
+                name: "Netlify",
+                url: "https://netlify.com",
+                category: "coding",
+                tags: ["hosting", "deployment", "web", "development"],
+                favicon: "https://www.google.com/s2/favicons?sz=64&domain_url=https://netlify.com",
+                dateAdded: "2024-01-01T09:00:00.000Z"
+            },
+            {
+                id: "Bookmark-11",
+                name: "Emupedia",
+                url: "https://emupedia.net",
+                category: "entertainment",
+                tags: ["emulator", "retro", "games", "nostalgia"],
+                favicon: "https://www.google.com/s2/favicons?sz=64&domain_url=https://emupedia.net",
+                dateAdded: "2024-01-01T10:00:00.000Z"
+            },
+            {
+                id: "Bookmark-12",
+                name: "Sejda",
+                url: "https://sejda.com",
+                category: "tools",
+                tags: ["pdf", "editor", "converter", "utility"],
+                favicon: "https://www.google.com/s2/favicons?sz=64&domain_url=https://sejda.com",
+                dateAdded: "2024-01-01T11:00:00.000Z"
             }
         ];
 
         // Category detection keywords - helps auto-categorize bookmarks
         const categoryKeywords = {
-            coding: ["github", "stackoverflow", "codepen", "gitlab", "bitbucket", "replit", "codesandbox", "dev.to", "hackernews", "programming", "developer", "code", "api", "documentation", "docs"],
+            coding: ["github", "stackoverflow", "codepen", "gitlab", "bitbucket", "replit", "codesandbox", "dev.to", "hackernews", "programming", "developer", "code", "api", "documentation", "docs", "netlify", "leetcode"],
             social: ["facebook", "twitter", "instagram", "linkedin", "discord", "slack", "telegram", "whatsapp", "reddit", "social", "community", "chat"],
-            tools: ["notion", "trello", "asana", "figma", "canva", "photoshop", "productivity", "tools", "app", "software", "utility"],
-            entertainment: ["youtube", "netflix", "spotify", "twitch", "gaming", "music", "video", "entertainment", "movie", "stream"],
+            tools: ["notion", "trello", "asana", "figma", "canva", "photoshop", "productivity", "tools", "app", "software", "utility", "gmail", "fakedetails", "sejda"],
+            entertainment: ["youtube", "netflix", "spotify", "twitch", "gaming", "music", "video", "entertainment", "movie", "stream", "hianime", "emugames", "emupedia"],
             news: ["news", "bbc", "cnn", "reuters", "techcrunch", "verge", "medium", "blog", "article", "newspaper"],
-            learning: ["coursera", "udemy", "khan", "education", "course", "tutorial", "learning", "university", "school", "training"],
+            learning: ["coursera", "udemy", "khan", "education", "course", "tutorial", "learning", "university", "school", "training", "scrimba"],
             shopping: ["amazon", "ebay", "shop", "store", "buy", "cart", "ecommerce", "retail", "marketplace"]
         };
 
@@ -363,9 +462,9 @@
             sortMenu.id = "sortMenu";
             sortMenu.className = "sort-menu active";
             sortMenu.innerHTML = `
-                <div class="sort-option" onclick="sortBookmarks('name')">📝 Sort by Name</div>
+                <div class="sort-option" onclick="sortBookmarks('name')">🔤 Sort by Name</div>
                 <div class="sort-option" onclick="sortBookmarks('date')">📅 Sort by Date</div>
-                <div class="sort-option" onclick="sortBookmarks('category')">📁 Sort by Category</div>
+                <div class="sort-option" onclick="sortBookmarks('category')">📂 Sort by Category</div>
                 <div class="sort-option" onclick="clearAllBookmarks()">🗑️ Clear All Bookmarks</div>
             `;
             
