@@ -338,10 +338,6 @@ let bookmarks = [];
                         bookmark.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
                     );
                     
-                    // If no matches found, search on Google
-                    if (matchingBookmarks.length === 0) {
-                        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
-                    }
                 }
             }
         }
