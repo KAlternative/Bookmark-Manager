@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "📚 Bookmark Manager",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple new tab extension to manage and organize your bookmarks with categories, tags, and search.",
   "chrome_url_overrides": {
     "newtab": "index.html"
