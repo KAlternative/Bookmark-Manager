@@ -415,7 +415,12 @@ let bookmarks = [];
         }
 
         function openBookmarkUrl(url) {
-            window.location.href = url;
+            try {
+                const validUrl = new URL(url);
+                window.location.href = validUrl.href;
+            } catch (e) {
+                alert('Invalid URL. Please check the bookmark link.');
+            }
         }
 
         function deleteBookmark(bookmarkId) {
